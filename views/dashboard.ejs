@@ -1,21 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-   </head>
-   <body>
-     <h1>logged in successfully. its dashboard</h1>
-     <button> <a href="/auth/logout"> logout</a></button>
- 
-  </body>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+  <title>DoubtHut | Dashboard</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/questions">Public Q&A</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/articles">Public Articles</a>
+        </li>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+
+        <a href="/auth/logout" class="btn btn-outline-success my-2 my-sm-0">Logout
+        </a>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-sm-12 col-md-3" style="border-right: 2px solid #fca311;">
+        <div class="justify-content-md-center">
+          <div class="card cardBorderCorners darkCard ml-5">
+            <div class="card-body">
+              <img class="proPic proDark card-img rounded-circle" src="<%= image %>" alt="Profile Pic">
+              <h5 class="darkTitle card-title"><%= name %></h5>
+              <h6 class="darkSubTitle card-subtitle text-center" style="color: whitesmoke;"><% if(category){ %>
+                <h6 style="color: whitesmoke;" class="text-center">Category: <%= category %></h6>
+                <% } %></h6>
+
+              <p class="darkMail card-text">
+
+                <a href="/questions/post" class="btn btn-block btn-info">Post a Question</a>
+                <a href="/articles/post" class="btn btn-block btn-info">Post an Article</a>
+                <a href="/users/settings/<%= userId %> " class="btn btn-dark mt-2 align-items-center">Profile
+                  Settings</a>
+              </p>
+            </div>
+
+          </div>
+          <h3 class="text-secondary mt-3">My Bookmarks</h3>
+          <% if(bookmarks.length){ %> <% bookmarks.forEach(bookmark=>{ %>
+          <div class="bg-light my-2 p-2">
+            <h5><%= bookmark.question %></h5>
+            <div class="text-secondary">
+              <p>
+                Category: <%= bookmark.category %> <br />
+                Subject: <%= bookmark.subject %>
+              </p>
+              <p style="font-size: 0.8rem">
+                <em>Question posted by
+                  <a href="/users/<%= bookmark.QUserId%>" class="text-muted">
+                    <%= bookmark.QUsername %>
+                  </a>
+                </em>
+              </p>
+            </div>
+            <hr />
+            <p>
+              <strong class="text-success">Answer:</strong> <%=
+                bookmark.answer %>
+            </p>
+            <p style="font-size: 0.8rem" class="text-muted">
+              <em>Answered by
+                <a href="/users/<%= bookmark.AUserId%>" class="text-muted">
+                  <%= bookmark.AUsername %>
+                </a>
+              </em>
+            </p>
+            <form action="/users/bookmarks/delete/<%= bookmark.id %> " method="post">
+              <input type="hidden" name="_method" value="PATCH" />
+              <button class="btn btn-warning btn-sm">
+                Remove from Bookmark
+              </button>
+            </form>
+          </div>
+          <%})}else{ %>
+          <p class="text-muted text-center">No bookmarks in your list...</p>
+          <% } %>
+
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-8">
+        <div class="justify-content-md-center">
+          <h3 class="text-secondary">My Questions</h3>
+          <% if (questions.length) { %> <% questions.forEach(element => { %>
+          <div class="bg-light my-2 p-2">
+            <h5><%= element.question %></h5>
+            <p class="text-secondary">
+              Category: <%= element.category %> <br />
+              Subject: <%= element.subject %> <br />
+            </p>
+            <div class="d-flex align-items-center">
+              <a href="/questions/<%= element._id %> " role="button" class="btn btn-primary mr-2 mb-3">Read Answers</a>
+              <form action="/questions/delete/<%= element._id %> " method="post">
+                <div class="form-group">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <button class="btn btn-outline-danger">
+                    Delete Question
+                  </button>
+                </div>
+              </form>
+              <a href="/questions/edit/<%= element._id %> " class="ml-auto mr-3 text-info">Edit</a>
+            </div>
+          </div>
+          <% })} else { %>
+          <p class="text-muted text-center">No questions in your list...</p>
+          <% } %>
+        </div>
+        <div class="my-2">
+          <h3 class="text-secondary">Answers Posted</h3>
+          <% if(answers.length){ answers.forEach(element=>{ %>
+          <div class="row bg-light my-2 mx-1 p-2">
+            <div class="col-md-8">
+              <h5><%= element.question %></h5>
+              <p>
+                <strong class="text-success">Your Answer:</strong> <%=
+                  element.answer %>
+              </p>
+              <div class="d-flex align-items-center">
+                <a href="/questions/answers/edit/<%= element.id %> " class="text-info mr-2">Edit</a>
+
+                <form action="/questions/answers/delete/<%= element.id %> " method="post">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <button type="submit" class="btn btn-outline-danger btn-sm">
+                    Delete my Answer
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-4 my-2 my-md-0 text-secondary text-md-right pr-4">
+              <p>
+                Category: <%= element.category %> <br />
+                Subject: <%= element.subject %>
+              </p>
+              <p style="font-size: 0.8rem">
+                <em>Question posted by
+                  <a href="/users/<%= element.userId%>" class="text-muted">
+                    <%= element.username %>
+                  </a>
+                </em>
+              </p>
+            </div>
+          </div>
+          <%})} else{%>
+          <p class="text-muted text-center">No answers has been posted...</p>
+          <% } %>
+        </div>
+        <div class="my-2 p">
+          <h3 class="text-secondary">My Articles</h3>
+          <% if(articles.length){ %> <% articles.forEach(article=>{ %>
+          <div class="bg-light my-2 mx-1 row p-2 align-items-center">
+            <div class="col-md-7">
+              <h5><%= article.question %></h5>
+              <div class="d-flex align-items-center">
+                <a href="/articles/<%= article._id %> " class="btn btn-primary btn-sm mr-2">Read Article</a>
+                <a href="/articles/edit/<%= article._id %> " class="text-info mr-2">Edit</a>
+                <form action="/articles/delete/<%= article._id %> " method="POST">
+                  <input type="hidden" name="_method" value="DELETE" />
+                  <button class="btn btn-outline-danger btn-sm mr-2">
+                    Delete Article
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-4 mx-auto mr-md-0">
+              <p class="text-secondary">
+                Category: <%= article.category %> <br />
+                Subject: <%= article.subject %>
+              </p>
+            </div>
+          </div>
+          <% })}else{ %>
+          <p class="text-muted text-center">No articles in your list.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </html>
