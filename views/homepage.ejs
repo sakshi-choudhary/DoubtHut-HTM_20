@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
 
-    <title>DoubtHut</title>
-    <style>
-      body{
-        background-color: #fca311;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+
+  <title>DoubtHut</title>
+  <style>
+    body {
+      background-color: #fca311;
+    }
+
     .google-btn {
       margin-top: 15%;
       width: 299px;
@@ -22,7 +20,8 @@
       background-color: #4285f4;
       border-radius: 2px;
       box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
-   }
+    }
+
     .google-btn .google-icon-wrapper {
       position: absolute;
       margin-top: 4px;
@@ -31,55 +30,60 @@
       height: 40px;
       border-radius: 2px;
       background-color: #fff;
-   }
+    }
+
     .google-btn .google-icon {
       position: absolute;
       margin-top: 11px;
       margin-left: 11px;
       width: 18px;
       height: 18px;
-   }
+    }
+
     .google-btn .btn-text {
       float: right;
       margin: 11px 11px 0 0;
       color: #fff;
       font-size: 14px;
       letter-spacing: 0.2px;
-   }
+    }
+
     .google-btn:hover {
       box-shadow: 0 0 6px #4285f4;
       cursor: pointer;
-   }
+    }
+
     .google-btn:active {
       background: #1669f2;
-   }
-   .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-   
-    </style>
-   
-  </head>
-  <body>
-    <div class="jumbotron jumbotron-fluid" style="background-color: white;">
-      <div class="container">
-      
-        <img src="/images/logo.png" class="center" height="50%" width="50%">
-        <h5 class="text-center"><em>Ask Doubt! Solve Doubt!</em></h5>
-</div>
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="jumbotron jumbotron-fluid" style="background-color: white;">
+    <div class="container">
+
+      <img src="/images/logo.png" class="center" height="50%" width="50%">
+      <h5 class="text-center"><em>Ask Doubt! Solve Doubt!</em></h5>
     </div>
-    <a href="/auth/google">
+  </div>
+  <a href="/auth/google">
     <div class="google-btn container align-self-center pt-1">
       <div class="google-icon-wrapper">
-        <img class="google-icon " src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+        <img class="google-icon " src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
       </div>
-      <p class="btn-text pb-3 mb-2 pl-3" style="font-size: x-large;"><b> &nbsp; &nbsp;   Sign in with google</b></p>
+      <p class="btn-text pb-3 mb-2 pl-3" style="font-size: x-large;"><b> &nbsp; &nbsp; Sign in with google</b></p>
     </div>
   </a>
 
-  </body>
+</body>
 
 </html>
