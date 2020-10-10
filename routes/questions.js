@@ -59,4 +59,30 @@ router.get("/edit/:id", ensureAuth, async (req, res) => {
     }
   });
 
+
+//@route    PATCH /questions/:id
+//@desc     Edit the question
+router.patch("/:id", ensureAuth, async (req, res) => {
+    try {
+      let question = await Question.findById(req.params.id).lean();
+      if (!question) {
+        return res.send("Error, Not Found");
+      }
+  
+      if (question.userId.toString() !== req.user._id.toString()) {
+        res.redirect("/questions");
+      } else {
+        question.category = req.body.category || question.category;
+        question.subject = req.body.subject || question.subject;
+        question.question = req.body.question || question.question;
+  
+        await Question.findByIdAndUpdate({ _id: req.params.id }, question);
+        res.redirect("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
+  
 module.exports = router;
