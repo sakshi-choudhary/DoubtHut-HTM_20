@@ -39,6 +39,24 @@ router.post("/", ensureAuth, async (req, res) => {
   }
 });
 
-
+//@route    GET /questions/edit/:id
+//@desc     Render the form to edit the question
+router.get("/edit/:id", ensureAuth, async (req, res) => {
+    try {
+      let question = await Question.findById(req.params.id).lean();
+      if (!question) {
+        return res.send("Error, Not Found");
+      }
+  
+      if (question.userId.toString() !== req.user._id.toString()) {
+        res.redirect("/questions");
+      } else {
+        res.render("questions/editQuestion", { question });
+      }
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
 
 module.exports = router;
