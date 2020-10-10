@@ -3,6 +3,8 @@ const router = express.Router();
 const { ensureAuth } = require("../middleware/auth");
 
 const User = require("../models/Users");
+const Question = require("../models/Question");
+const Article = require("../models/Article");
 
 //@route  GET  /users/settings/:id
 //@desc   Render the user profile settings page
@@ -140,6 +142,22 @@ router.patch("/bookmarks/add/:id", ensureAuth, async (req, res) => {
     }
   });
   
+  //@route    PATCH users/bookmarks/delete/:id
+//@desc     Delete bookmark of answers
+router.patch("/bookmarks/delete/:id", ensureAuth, async (req, res) => {
+    try {
+      let user = await User.findById(req.user.id);
+  
+      user.bookmarks = user.bookmarks.filter(
+        (bookmark) => bookmark.id.toString() !== req.params.id.toString()
+      );
+      await User.findByIdAndUpdate({ _id: req.user.id }, user);
+      res.redirect("/dashboard");
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
 
 
 module.exports = router;
