@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <title>DoubtHut</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item  active">
+                    <a class="nav-link" href="/questions">Public Q&A <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/articles">Public Articles</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a href="/auth/logout">
+
+                    <button class="btn btn-outline-success my-2 my-sm-0">LogOut</button></a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mx-2">
+            <div class="col-md-7 mx-auto bg-light px-2 py-3">
+                <div>
+                    <h3><%= question.question %></h3>
+                    <p>
+                        Category: <%= question.category %> <br />
+                        Subject: <%= question.subject %>
+                    </p>
+                    <p class="text-muted" style="font-size: 0.8rem">
+                        <em>Question posted by:
+                            <a href="/users/<%= question.userId %> " class="text-muted"><%= question.username %></a>
+                        </em>
+                    </p>
+                </div>
+                <% if (question.answers.length) { %>
+                <p class="lead text-success"><b>Answers:</b></p>
+                <% question.answers.forEach(element =>{ %>
+                <div class="border p-3">
+                    <h6><%= element.content %></h6>
+                    <p class="text-muted" style="font-size: 0.8rem">
+                        <em>Answered by:
+                            <a href="/users/<%= element.userId %> " class="text-muted"><%= element.username %></a></em>
+                    </p>
+                    <div class="d-flex align-items-center">
+                        <% if(element.userId.toString()===loggedInUser._id.toString()){ %>
+                        <a href="/questions/answers/edit/<%= element.id %>" class="mr-2">Edit</a>
+                        <% } %> <%
+              if((question.userId.toString()===loggedInUser._id.toString())||(element.userId.toString()===loggedInUser._id.toString())){
+              %>
+                        <form action="/questions/answers/delete/<%= element.id %>" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                Delete Answer
+                            </button>
+                        </form>
+                        <% } %> <%
+              if(element.userId.toString()!==loggedInUser._id.toString()){ %>
+                        <form action="/users/bookmarks/add/<%= element.id %>" method="post">
+                            <input type="hidden" name="_method" value="PATCH" />
+                            <button class="btn btn-outline-warning btn-sm ml-2">
+                                Add to Bookmark
+                            </button>
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+                <hr width="80%" />
+                <%}); } else { %>
+                <p class="my-2 text-muted lead">No answers posted!</p>
+                <% } %>
+            </div>
+            <% if(question.userId.toString() != loggedInUser._id.toString()) { %>
+            <div class="col-md-4 mx-auto bg-light px-2 py-3">
+                <h3>Post an Answer!</h3>
+                <form action="/questions/answers/<%= question._id %> " method="POST">
+                    <input type="hidden" name="_method" value="PATCH" />
+                    <textarea name="answer" placeholder="Write your answer..." class="form-control mt-2" rows="10"
+                        required>
+<% if(isEditing){ %> <%= editingContent %> <% } %> </textarea>
+                    <button type="submit" class="btn btn-success btn-block my-3">
+                        <strong>POST Answer</strong>
+                    </button>
+                </form>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
