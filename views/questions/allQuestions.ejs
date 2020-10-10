@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <title>DoubtHut | Public Q&A</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item  active">
+                    <a class="nav-link" href="/questions">Public Q&A <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/articles">Public Articles</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a href="/auth/logout">
+
+                    <button class="btn btn-outline-success my-2 my-sm-0">LogOut</button></a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h3 class="text-secondary my-4">Public QnA</h3>
+        <% allQuestions.forEach(element => { %>
+        <div class="row m-2 my-md-2 mx-md-0 border">
+            <div class="col-md-8  p-3">
+                <h6><%= element.question %></h6>
+                <p>
+                    Category: <%= element.category %> <br />
+                    Subject: <%= element.subject %>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href="/questions/<%= element._id %> " role="button" class="btn btn-primary my-md-2">Read Answers</a>
+                <p class="my-2 text-muted" style="font-size: 0.8rem">
+                    <em>Question posted by:
+                        <a href="/users/<%= element.userId %> " class="text-muted"><%= element.username %></a>
+                    </em>
+                </p>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+</html>
