@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <title>DoubtHut | Profile</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/questions">Public Q&A</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/articles">Public Articles</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+
+                <a href="/auth/logout" class="btn btn-outline-success my-2 my-sm-0">Logout
+                </a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div>
+                    <h3 class="text-secondary">Profile</h3>
+                    <div class="card my-2">
+                        <div class="card-content p-3 bg-light d-flex d-md-block align-items-center text-center">
+                            <div>
+                                <img src="<%= user.image %> " width="100" alt="UserProfile" />
+                            </div>
+                            <div class="m-auto mt-md-4">
+                                <h4><%= user.displayName %></h4>
+                                <% if(user.category){ %>
+                                <h6>Category: <%= user.category %></h6>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-secondary my-2">Articles Posted</h3>
+                    <% if(articles.length){ %>
+                    <% articles.forEach(article => { %>
+                    <div class="my-2 bg-light p-2">
+                        <h5><%= article.question %> </h5>
+                        <p class="text-secondary">
+                            Category: <%= article.category %> <br />
+                            Subject: <%= article.subject %> <br />
+                        </p>
+                        <a href="/articles/<%= article.id %> " class="btn btn-primary btn-sm">Read Article</a>
+                    </div>
+                    <% })}else{ %>
+                    <p class="text-muted text-center">
+                        No articles has been posted...
+                    </p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-md-7 mx-auto">
+                <div class="mb-3">
+                    <h3 class="text-secondary">Questions Posted</h3>
+                    <% if (questions.length) { %> <% questions.forEach(element => { %>
+                    <div class="row">
+                        <div class="col-md-8 bg-light mt-2 p-2">
+                            <h5><%= element.question %></h5>
+                            <p class="text-secondary">
+                                Category: <%= element.category %> <br />
+                                Subject: <%= element.subject %> <br />
+                            </p>
+                        </div>
+                        <div class="col-md-3 mx-auto bg-light my-md-2 text-md-center p-3">
+                            <a href="/questions/<%= element._id %> " role="button"
+                                class="btn btn-primary mr-2 mb-3">Read Answers</a>
+                        </div>
+                    </div>
+                    <% })} else { %>
+                    <p class="text-muted text-center">
+                        No questions has been posted...
+                    </p>
+                    <% } %>
+                </div>
+                <div class="my-2">
+                    <h3 class="text-secondary">Answers Posted</h3>
+                    <% if(answers.length){ answers.forEach(element=>{ %>
+                    <div class="row bg-light my-2 p-2">
+                        <div class="col-md-8">
+                            <h5><%= element.question %></h5>
+                            <p>
+                                <strong class="text-success">Answer:</strong> <%=
+                  element.answer %>
+                            </p>
+                            <form action="/users/bookmarks/add/<%= element.id %>" method="post">
+                                <input type="hidden" name="_method" value="PATCH" />
+                                <button class="btn btn-outline-warning btn-sm ml-2">
+                                    Add to Bookmark
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-md-4 text-secondary text-md-right pr-4">
+                            <p>
+                                Category: <%= element.category %> <br />
+                                Subject: <%= element.subject %>
+                            </p>
+                            <p style="font-size: 0.8rem">
+                                <em>Question posted by
+                                    <a href="/users/<%= element.userId%>" class="text-muted">
+                                        <%= element.username %>
+                                    </a>
+                                </em>
+                            </p>
+                        </div>
+                    </div>
+                    <%})} else{%>
+                    <p class="text-muted text-center">No answers has been posted...</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
