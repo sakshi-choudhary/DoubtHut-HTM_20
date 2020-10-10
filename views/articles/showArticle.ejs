@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>DoubtHut | Articles</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/questions">Public Q&A</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/articles">Public Articles <span class="sr-only">(current)</span></a>
+          </li>
+        
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+       
+          <a  href="/auth/logout">
+       
+            <button class="btn btn-outline-success my-2 my-sm-0">LogOut</button></a>
+        </form>
+      </div>
+</nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 card mx-auto mt-2 mt-md-5 p-0">
+          <div class="card-content p-3">
+            <h4><%= article.question %></h4>
+            <hr />
+            <p><%= article.answer %></p>
+          </div>
+          <div class="card-footer text-center">
+            <p class="text-muted mt-2" style="font-size: 0.8rem">
+              <em>
+                Article posted by:
+                <a href="/users/<%= article.userId %>" class="text-muted"
+                  ><%= article.username %>
+                </a>
+              </em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

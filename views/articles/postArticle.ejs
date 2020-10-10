@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>DoubtHut | Articles</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/questions">Public Q&A</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/articles">Public Articles <span class="sr-only">(current)</span></a>
+          </li>
+        
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+       
+          <a  href="/auth/logout">
+       
+            <button class="btn btn-outline-success my-2 my-sm-0">LogOut</button></a>
+        </form>
+      </div>
+</nav>
+
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-md-6 m-auto card p-0">
+          <div class="card-header">
+            <h4 class="text-center">Post an Article</h4>
+          </div>
+          <div class="card-content p-3">
+            <form action="/articles" method="POST">
+              <div class="form-group">
+                <label for="category">Category</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="category"
+                  placeholder="Add your Category"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="subject"
+                  placeholder="Add your Subject"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="question">Question</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="question"
+                  placeholder="What's your Question?"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="answer">Answer</label>
+                <textarea
+                  name="answer"
+                  class="form-control"
+                  rows="5"
+                  placeholder="Write your answer"
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success float-right">
+                  <strong>POST Article</strong>
+                </button>
+                <a
+                  href="/dashboard"
+                  role="button"
+                  class="btn btn-secondary float-left"
+                  >Cancel</a
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
