@@ -95,5 +95,51 @@ router.get("/:id", ensureAuth, async (req, res) => {
   }
 });
 
+//@route    PATCH users/bookmarks/add/:id
+//@desc     Add bookmark of answers
+router.patch("/bookmarks/add/:id", ensureAuth, async (req, res) => {
+    try {
+      const questions = await Question.find();
+  
+      let user = await User.findById(req.user._id);
+  
+      let bookmark = user.bookmarks.filter(
+        (bookmark) => bookmark.id.toString() === req.params.id.toLowerCase()
+      );
+  
+      if (bookmark.length) {
+        return res.redirect("/dashboard");
+      }
+  
+      questions.forEach((question) => {
+        question.answers.forEach((element) => {
+          if (element.id.toString() === req.params.id.toString()) {
+            let newBookmark = {
+              question: question.question,
+              questionId: question._id,
+              answer: element.content,
+              QUsername: question.username,
+              QUserId: question.userId,
+              AUsername: element.username,
+              AUserId: element.userId,
+              category: question.category,
+              subject: question.subject,
+              id: element.id,
+            };
+            user.bookmarks = [...user.bookmarks, newBookmark];
+          }
+        });
+      });
+      // console.log(user.bookmarks);
+  
+      await User.findByIdAndUpdate({ _id: req.user._id }, user);
+      res.redirect("/dashboard");
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
+  
+
 
 module.exports = router;
