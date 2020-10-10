@@ -48,11 +48,48 @@ router.patch("/settings/:id", ensureAuth, async (req, res) => {
 //@route    GET users/:id
 //@desc     Show show user's profile
 router.get("/:id", ensureAuth, async (req, res) => {
-  try {
-    res.render("user/userProfile", {
-      user, 
-    });
-  } catch (error) {
+    try {
+        if (req.user._id.toString() === req.params.id.toString()) {
+          return res.redirect("/dashboard");
+        }
+        let user = await User.findById(req.params.id);
+        if (!user) {
+          return res.send("Error, Not Found");
+        }
+    
+        const questions = await Question.find();
+        const question = questions.filter(
+          (element) => element.userId.toString() === user._id.toString()
+        );
+    
+        let answers = [];
+    
+        questions.forEach((question) => {
+          question.answers.forEach((element) => {
+            if (element.userId.toString() === user._id.toString()) {
+              let answer = {
+                question: question.question,
+                username: question.username,
+                userId: question.userId,
+                category: question.category,
+                subject: question.subject,
+                answer: element.content,
+                id: element.id,
+              };
+              answers = [...answers, answer];
+            }
+          });
+        });
+        const articles = await Article.find({ userId: req.params.id });
+        // console.log(articles);
+    
+        res.render("user/userProfile", {
+          user,
+          questions: question,
+          answers,
+          articles,
+        });
+      } catch (error) {
     console.error(error);
     res.send("Server Error");
   }
