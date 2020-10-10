@@ -186,4 +186,48 @@ router.delete("/answers/delete/:id", ensureAuth, async (req, res) => {
   }
 });
 
+//@route    GET /questions/answers/edit/:id
+//@desc     TO enable the user to edit thier answers
+router.get("/answers/edit/:id", ensureAuth, async (req, res) => {
+    try {
+      let questions = await Question.find().lean();
+      let answer1 = {},
+        question1 = {};
+      questions.forEach((question) => {
+        question.answers.forEach((answer) => {
+          if (answer.id.toString() === req.params.id.toString()) {
+            answer1 = answer;
+            question1 = question;
+          }
+        });
+      });
+  
+      if (!answer1) {
+        res.send("Error, Not Found");
+      }
+  
+      if (answer1.userId.toString() === req.user._id.toString()) {
+        //Delete the existing content
+        question1.answers = question1.answers.filter(
+          (element) => element.id !== answer1.id
+        );
+        await Question.findByIdAndUpdate({ _id: question1._id }, question1);
+  
+        //Send the editing content
+        res.render("questions/showAnswers", {
+          question: question1,
+          loggedInUser: req.user,
+          isEditing: true,
+          editingContent: answer1.content,
+        });
+      } else {
+        res.redirect("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
+  
+
 module.exports = router;
