@@ -84,5 +84,50 @@ router.patch("/:id", ensureAuth, async (req, res) => {
       res.send("Server Error");
     }
   });
+
+  //@route    GET /questions/:id
+//@desc     Display the selected question with answers
+router.get("/:id", ensureAuth, async (req, res) => {
+    try {
+      let question = await Question.findById({ _id: req.params.id }).lean();
+      if (!question) {
+        return res.send("Error, Not Found");
+      }
+      res.render("questions/showAnswers", {
+        question,
+        loggedInUser: req.user,
+        isEditing: false,
+      });
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
   
+  //@route    PATCH /questions/answers/:id
+  //@desc     Post an answer for a specific question
+  router.patch("/answers/:id", ensureAuth, async (req, res) => {
+    try {
+      let question = await Question.findById({ _id: req.params.id }).lean();
+      if (!question) {
+        return res.send("Error, Not Found");
+      }
+  
+      let newAnswer = {
+        id: new Date().getTime().toString(),
+        content: req.body.answer,
+        username: req.user.displayName,
+        userId: req.user._id,
+      };
+      question.answers = [...question.answers, newAnswer];
+      // console.log(question);
+      await Question.findByIdAndUpdate({ _id: req.params.id }, question);
+      res.redirect(`/questions/${req.params.id}`);
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
+  
+
 module.exports = router;
