@@ -57,4 +57,52 @@ router.post("/", ensureAuth, async (req, res) => {
   }
 });
 
+
+//@route    GET /articles/edit/:id
+//@desc     Render a from to edit an article
+router.get("/edit/:id", ensureAuth, async (req, res) => {
+    try {
+      let article = await Article.findById(req.params.id).lean();
+      if (!article) {
+        return res.send("Error, Not Found");
+      }
+  
+      if (article.userId.toString() !== req.user._id.toString()) {
+        return res.redirect("/dashboard");
+      } else {
+        res.render("articles/editArticle", { article });
+      }
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
+  
+  //@route    PATCH /articles/:id
+  //@desc     Editing an article
+  router.patch("/:id", ensureAuth, async (req, res) => {
+    try {
+      let article = await Article.findById(req.params.id).lean();
+      if (!article) {
+        return res.send("Error, Not Found");
+      }
+  
+      if (article.userId.toString() !== req.user._id.toString()) {
+        return res.redirect("/");
+      } else {
+        article.category = req.body.category || article.category;
+        article.subject = req.body.subject || article.subject;
+        article.question = req.body.question || article.question;
+        article.answer = req.body.answer || article.answer;
+  
+        await Article.findByIdAndUpdate({ _id: req.params.id }, article);
+        res.redirect("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+      res.send("Server Error");
+    }
+  });
+  
+
 module.exports = router;
