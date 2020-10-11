@@ -1,6 +1,6 @@
 # DoubtHut- HTM'20
-<img align="left" src="mlh-logo.png" height="100" width="200"/>
-<img align="right" src="htmlogo.png" height="130" width="200"/>
+<img align="left" src="mlh-logo.png" height="70" width="170"/>
+<img align="right" src="htmlogo.png" height="100" width="170"/>
 
 
 <img src="public/images/logo.png" height="auto" width="100%"/>
