@@ -7,6 +7,10 @@
 
 <hr>
 
+![](preview.jpeg)
+
+<hr>
+
 # TRACK : Education
 
 In this difficult time of COVID-19 outspread students are not able to attend their schools or tuitions. So, they are not able to meet their classmates and hence unable to discuss their academic doubts what they earlier used to do in their free lectures or after classes as after all your friend can sometime explain better than a teacher. Therefore, this Web App "DoubtHut" has been developed to solve this problem. <br>
