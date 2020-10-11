@@ -1,9 +1,10 @@
 # HTM_2020
-
-<img align="right" src="htmlogo.png" height="150" width="190"/>
+<img align="left" src="mlh-logo.png" height="100" width="190"/>
+<img align="right" src="htmlogo.png" height="130" width="190"/>
+<hr>
 <img src="public/images/logo.png" height="auto" width="100%"/>
 
-
+<hr>
 # Technologies Used
 
 <img src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
