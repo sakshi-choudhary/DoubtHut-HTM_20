@@ -1,9 +1,7 @@
 # HTM_2020
 
-![](htmlogo.png)
-![](mlh.png)
-![](doubthut.png)
-
+<img align="right" src="htmlogo.png" height="150" width="190"/>
+<img src="public/images/logo.png" height="auto" width="100%"/>
 
 
 # Technologies Used
