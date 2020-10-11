@@ -1,4 +1,4 @@
-const express = require("./node_modules/express");
+const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const cors = require("cors");
