@@ -1,4 +1,4 @@
-# HTM_2020
+# DoubtHut- HTM'20
 <img align="left" src="mlh-logo.png" height="100" width="190"/>
 <img align="right" src="htmlogo.png" height="130" width="190"/>
 
