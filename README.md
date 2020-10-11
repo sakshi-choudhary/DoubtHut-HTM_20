@@ -17,6 +17,9 @@ In this difficult time of COVID-19 outspread students are not able to attend the
 
 
 ```bash
+# clone the repository to your local machine
+git clone [URL]
+
 # install dependencies
 npm install
 
