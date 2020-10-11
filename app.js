@@ -8,8 +8,6 @@ const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 
-
-const port = process.env.PORT || 7781
 const app = express();
 
 //*****CONFIGURATION
@@ -39,7 +37,7 @@ app.use(
 //Session
 app.use(
   session({
-    secret: `${process.env.PORT}` || '7781' ,
+    secret: process.env.PORT ,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -64,6 +62,6 @@ app.use("/articles", require("./routes/articles"));
 app.use(express.static("public"));
 
 //*****PORT
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server Connected");
 });
