@@ -39,7 +39,7 @@ app.use(
 //Session
 app.use(
   session({
-    secret: 'process.env.PORT' || '7781' ,
+    secret: `${process.env.PORT}` || '7781' ,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
