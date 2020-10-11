@@ -1,81 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    <title>DoubtHut | Profile Settings</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/questions">Public Q&A</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/articles">Public Articles</a>
-          </li>
-        
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-       
-          <a href="/auth/logout" class="btn btn-outline-success my-2 my-sm-0">Logout
-       </a>
-        </form>
-      </div>
-</nav>
 
-    <div class="container">
-      <div class="row mt-5 mx-1">
-        <div class="col-md-6 card mx-auto p-0">
-          <div class="card-header text-center">
-            <h3>Profile Settings</h3>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  <style>
+    body {
+      background-image: url(/images/whitey.png);
+
+    }
+  </style>
+  <title>DoubtHut | Profile Settings</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+      aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/questions">Public Q&A</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/articles">Public Articles</a>
+        </li>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+
+        <a href="/auth/logout" class="btn btn-outline-success my-2 my-sm-0">Logout
+        </a>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row mt-5 mx-1">
+      <div class="col-md-6 card mx-auto p-0">
+        <div class="card-header text-center">
+          <h3>Profile Settings</h3>
+        </div>
+        <div class="card-content p-3">
+          <div class="d-flex d-md-block text-center align-items-center">
+            <img src="<%= image %> " width="100" alt="UserProfile" />
+            <h4 class="m-auto mt-md-4"><%= name %></h4>
           </div>
-          <div class="card-content p-3">
-            <div class="d-flex d-md-block text-center align-items-center">
-              <img src="<%= image %> " width="100" alt="UserProfile" />
-              <h4 class="m-auto mt-md-4"><%= name %></h4>
+          <form action="/users/settings/<%= userId %>" method="post" class="my-2">
+            <input type="hidden" name="_method" value="PATCH" />
+            <div class="form-group">
+              <label for="category">Category:</label>
+              <input type="text" name="category" class="form-control" placeholder="Category of Exam"
+                value=" <%= category %>" required />
             </div>
-            <form
-              action="/users/settings/<%= userId %>"
-              method="post"
-              class="my-2"
-            >
-              <input type="hidden" name="_method" value="PATCH" />
-              <div class="form-group">
-                <label for="category">Category:</label>
-                <input
-                  type="text"
-                  name="category"
-                  class="form-control"
-                  placeholder="Category of Exam"
-                  value=" <%= category %>"
-                  required
-                />
-              </div>
-              <button type="submit" class="btn btn-success float-right">
-                <strong>Save Profile</strong>
-              </button>
-              <a href="/dashboard" class="btn btn-secondary float-left"
-                >Cancel</a
-              >
-            </form>
-          </div>
+            <button type="submit" class="btn btn-success float-right">
+              <strong>Save Profile</strong>
+            </button>
+            <a href="/dashboard" class="btn btn-secondary float-left">Cancel</a>
+          </form>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

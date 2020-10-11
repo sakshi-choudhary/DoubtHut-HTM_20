@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <style>
+        body {
+            background-image: url(/images/whitey.png);
+
+        }
+    </style>
     <title>DoubtHut | Public Q&A</title>
 </head>
 
@@ -40,7 +46,7 @@
     <div class="container">
         <h3 class="text-secondary my-4">Public QnA</h3>
         <% allQuestions.forEach(element => { %>
-        <div class="row m-2 my-md-2 mx-md-0 border">
+        <div class="row m-2 my-md-2 mx-md-0 border bg-light">
             <div class="col-md-8  p-3">
                 <h6><%= element.question %></h6>
                 <p>
