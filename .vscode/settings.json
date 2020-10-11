@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/52d2fe3a-876f-4ead-ba3b-ee0d8b94dfc8/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/doubthut",
+    "appService.deploySubpath": "."
+}

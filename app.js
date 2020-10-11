@@ -37,7 +37,7 @@ app.use(
 //Session
 app.use(
   session({
-    secret: process.env.PORT ,
+    secret: process.env.PORT || '7781' ,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -62,6 +62,6 @@ app.use("/articles", require("./routes/articles"));
 app.use(express.static("public"));
 
 //*****PORT
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 7781, () => {
   console.log("Server Connected");
 });
