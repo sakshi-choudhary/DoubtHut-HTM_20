@@ -11,6 +11,65 @@
             background-image: url(/images/whitey.png);
 
         }
+
+        a:focus,
+        a:hover {
+            text-decoration: none;
+            -webkit-transition: .3s ease;
+            -o-transition: .3s ease;
+            transition: .3s ease
+        }
+
+        a:focus {
+            outline: 0
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 30px;
+            color: #898b96;
+            font-weight: 300
+        }
+
+        .no-padding {
+            padding: 0 !important
+        }
+
+
+        .footer-menu {
+            padding-left: 48px
+        }
+
+        .mini-footer {
+            background: #192027;
+            text-align: center;
+            padding: 32px 0
+        }
+
+        .mini-footer p {
+            margin: 0;
+            line-height: 26px;
+            font-size: 15px;
+            color: #999
+        }
+
+        .mini-footer p a {
+            color: #fff;
+        }
+
+        .mini-footer p a:hover {
+            color: #8734bf;
+        }
+
+        .copyright-text p {
+            font-weight: 300;
+        }
+
+        @media (max-width:991px) {
+            .footer-menu {
+                padding-left: 0
+            }
+        }
     </style>
     <title>DoubtHut | Public Q&A</title>
 </head>
@@ -65,6 +124,22 @@
         </div>
         <% }) %>
     </div>
+    <footer class="m-3"></footer>
+
+    <div class="mini-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright-text">
+                        <p> Made with &#9749; by
+                            <a href="http://www.sakshichoudhary.me">Sakshi Choudhary</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
