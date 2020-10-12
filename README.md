@@ -53,4 +53,7 @@ Deployed on &nbsp; <img src="https://img.shields.io/badge/azure%20-%230072C6.svg
 <p align="center">
 	Made with :heart: by <a href="http://sakshichoudhary.me">Sakshi Choudhary</a>
 </p>
+<p align="center">
+	<img src="https://forthebadge.com/images/badges/check-it-out.svg" alt="">
+	</p>
 
