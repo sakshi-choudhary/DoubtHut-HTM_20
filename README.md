@@ -1,6 +1,9 @@
 # DoubtHut- HTM'20
+# Live at: http://doubthut.azurewebsites.net/
+
 <img align="left" src="mlh-logo.png" height="70" width="170"/>
 <img align="right" src="htmlogo.png" height="100" width="170"/>
+
 
 
 <img src="public/images/logo.png" height="auto" width="100%"/>
