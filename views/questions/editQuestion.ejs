@@ -6,30 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
   <style>
     body {
       background-image: url(/images/whitey.png);
 
+    }
+
+    .btn {
+      border-radius: 20px;
+      box-shadow: 4px 4px 4px rgba(3, 3, 3, 0.411);
+    }
+
+    .btn:hover {
+      box-shadow: 1px 1px 1px rgba(3, 3, 3, 0.411);
     }
   </style>
   <title>DoubtHut | Question</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light" style="box-shadow: 1px 1px 4px rgba(3, 3, 3, 0.411);">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
       aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
+      <a class="navbar-brand" href="/dashboard" style="font-size: 2.4em;  color: #f0a30a;">DoubtHut</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item  active">
-          <a class="nav-link" href="/questions">Public Q&A <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="/questions">Public Q&A</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/articles">Public Articles</a>
@@ -39,7 +49,8 @@
       <form class="form-inline my-2 my-lg-0">
         <a href="/auth/">
 
-          <button class="btn btn-outline-success my-2 my-sm-0"> <i class="fa fa-sign-out" aria-hidden="true"></i></button></a>
+          <button class="btn btn-outline-success my-2 my-sm-0"> <i class="fa fa-sign-out"
+              aria-hidden="true"></i></button></a>
       </form>
     </div>
   </nav>
@@ -85,4 +96,5 @@
   integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
   integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </html>

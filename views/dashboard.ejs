@@ -13,10 +13,12 @@
       background-image: url(/images/whitey.png);
 
     }
+
     p {
-            
-            font-weight: 300;
-        }
+
+      font-weight: 300;
+    }
+
     .proPic {
       height: 100px;
       width: 100px;
@@ -53,8 +55,9 @@
     }
 
     .card {
-      background-color: #fca311;
+      background-color: #ffb423;
       border: 2px solid rgb(228, 228, 228);
+      box-shadow: 6px 6px 4px rgba(3, 3, 3, 0.561);
     }
 
     .darkMail {
@@ -75,19 +78,27 @@
 
     }
 
+    .btn {
+      border-radius: 20px;
+      box-shadow: 4px 4px 4px rgba(3, 3, 3, 0.411);
+    }
+
+    .btn:hover {
+      box-shadow: 1px 1px 1px rgba(3, 3, 3, 0.411);
+    }
   </style>
 
   <title>DoubtHut | Dashboard</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light" style="box-shadow: 1px 1px 4px rgba(3, 3, 3, 0.411);">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
       aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="/dashboard" style="font-size: 2em;">DoubtHut</a>
+      <a class="navbar-brand" href="/dashboard" style="font-size: 2.4em;  color: #f0a30a;">DoubtHut</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
           <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
@@ -102,7 +113,8 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
 
-        <a href="/auth/logout" class="btn btn-outline-success my-2 my-sm-0"> <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <a href="/auth/logout" class="btn btn-outline-success my-2 my-sm-0"> <i class="fa fa-sign-out"
+            aria-hidden="true"></i>
         </a>
       </form>
     </div>
@@ -115,9 +127,10 @@
           <div class="card cardBorderCorners darkCard ml-2">
             <div class="card-body">
               <img class="proPic proDark card-img rounded-circle" src="<%= image %>" alt="Profile Pic">
-              <h5 class="darkTitle card-title"><%= name %></h5>
-              <h6 class="darkSubTitle card-subtitle text-center" style="color: whitesmoke;"><% if(category){ %>
-                <h6 style="color: whitesmoke;" class="text-center">Category: <%= category %></h6>
+              <h4 class="darkTitle card-title"><%= name %></h4>
+              <h6 class="darkSubTitle card-subtitle text-center">
+                <% if(category){ %>
+                <h6 style="color: rgba(0, 0, 0, 0.445); font-weight: 400;" class="text-center">Category: <%= category %></h6>
                 <% } %></h6>
 
               <p class="darkMail card-text">
