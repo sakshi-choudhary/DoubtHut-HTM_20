@@ -22,6 +22,10 @@
         .btn:hover {
             box-shadow: 1px 1px 1px rgba(3, 3, 3, 0.411);
         }
+        .form-control{
+            border: 2px solid #fca311 ;
+            box-shadow: 4px 4px 4px rgba(3, 3, 3, 0.287);
+        }
     </style>
     <title>DoubtHut </title>
 
@@ -37,8 +41,8 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
               <a class="navbar-brand" href="/dashboard" style="font-size: 2.4em;  color: #f0a30a;">DoubtHut</a>
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                  <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/questions">Public Q&A</a>
@@ -83,14 +87,14 @@
                     </p>
                     <div class="d-flex align-items-center">
                         <% if(element.userId.toString()===loggedInUser._id.toString()){ %>
-                        <a href="/questions/answers/edit/<%= element.id %>" class="mr-2">Edit</a>
+                        <a href="/questions/answers/edit/<%= element.id %>" class="mr-2"><i class="fa fa-edit" aria-hidden="true"></i></a>
                         <% } %> <%
               if((question.userId.toString()===loggedInUser._id.toString())||(element.userId.toString()===loggedInUser._id.toString())){
               %>
                         <form action="/questions/answers/delete/<%= element.id %>" method="post">
                             <input type="hidden" name="_method" value="DELETE" />
                             <button type="submit" class="btn btn-outline-danger btn-sm">
-                                Delete Answer
+                                <i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
                         </form>
                         <% } %> <%
@@ -98,7 +102,7 @@
                         <form action="/users/bookmarks/add/<%= element.id %>" method="post">
                             <input type="hidden" name="_method" value="PATCH" />
                             <button class="btn btn-outline-warning btn-sm ml-2">
-                                Add to Bookmark
+                                <i class="fa fa-bookmark" aria-hidden="true"></i>
                             </button>
                         </form>
                         <% } %>

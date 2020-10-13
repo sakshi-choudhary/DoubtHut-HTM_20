@@ -94,11 +94,11 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
           <a class="navbar-brand" href="/dashboard" style="font-size: 2.4em;  color: #f0a30a;">DoubtHut</a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-              <a class="nav-link" href="/questions">Public Q&A</a>
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/questions">Public Q&A  <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/articles">Public Articles</a>
@@ -127,7 +127,7 @@
                 </p>
             </div>
             <div class="col-md-4 text-center">
-                <a href="/questions/<%= element._id %> " role="button" class="btn btn-primary my-md-2">Read Answers</a>
+                <a href="/questions/<%= element._id %> " role="button" class="btn border my-md-2">Check Answers</a>
                 <p class="my-2 text-muted" style="font-size: 0.8rem">
                     <em>Question posted by:
                         <a href="/users/<%= element.userId %> " class="text-muted"><%= element.username %></a>

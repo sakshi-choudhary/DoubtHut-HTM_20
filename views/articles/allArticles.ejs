@@ -42,14 +42,14 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
       <a class="navbar-brand" href="/dashboard" style="font-size: 2.4em;  color: #f0a30a;">DoubtHut</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/questions">Public Q&A</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/articles">Public Articles</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="/articles">Public Articles  <span class="sr-only">(current)</span></a>
         </li>
 
       </ul>
@@ -74,7 +74,7 @@
         </p>
       </div>
       <div class="col-md-4 text-center">
-        <a href="/articles/<%= article._id %> " class="btn btn-primary btn-sm mb-3">Read Article</a>
+        <a href="/articles/<%= article._id %> " class="btn border btn-sm mb-3">Read Article</a>
         <p class="text-muted" style="font-size: 0.8rem">
           <em>
             Article posted by:

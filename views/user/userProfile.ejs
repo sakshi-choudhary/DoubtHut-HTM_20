@@ -35,8 +35,8 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
           <a class="navbar-brand" href="/dashboard" style="font-size: 2.4em;  color: #f0a30a;">DoubtHut</a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/questions">Public Q&A</a>
@@ -84,7 +84,7 @@
                             Category: <%= article.category %> <br />
                             Subject: <%= article.subject %> <br />
                         </p>
-                        <a href="/articles/<%= article.id %> " class="btn btn-primary btn-sm">Read Article</a>
+                        <a href="/articles/<%= article.id %> " class="btn border btn-sm">Read Article</a>
                     </div>
                     <% })}else{ %>
                     <p class="text-muted text-center">
@@ -107,7 +107,7 @@
                         </div>
                         <div class="col-md-3 mx-auto bg-light my-md-2 text-md-center p-3">
                             <a href="/questions/<%= element._id %> " role="button"
-                                class="btn btn-primary mr-2 mb-3">Read Answers</a>
+                                class="btn border mr-2 mb-3">Check Answers</a>
                         </div>
                     </div>
                     <% })} else { %>
@@ -129,7 +129,7 @@
                             <form action="/users/bookmarks/add/<%= element.id %>" method="post">
                                 <input type="hidden" name="_method" value="PATCH" />
                                 <button class="btn btn-outline-warning btn-sm ml-2">
-                                    Add to Bookmark
+                                    <i class="fa fa-bookmark" aria-hidden="true"></i>
                                 </button>
                             </form>
                         </div>

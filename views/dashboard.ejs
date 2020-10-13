@@ -130,7 +130,8 @@
               <h4 class="darkTitle card-title"><%= name %></h4>
               <h6 class="darkSubTitle card-subtitle text-center">
                 <% if(category){ %>
-                <h6 style="color: rgba(0, 0, 0, 0.445); font-weight: 400;" class="text-center">Category: <%= category %></h6>
+                <h6 style="color: rgba(0, 0, 0, 0.445); font-weight: 400;" class="text-center">Category: <%= category %>
+                </h6>
                 <% } %></h6>
 
               <p class="darkMail card-text">
@@ -175,12 +176,12 @@
             <form action="/users/bookmarks/delete/<%= bookmark.id %>" method="post">
               <input type="hidden" name="_method" value="PATCH" />
               <button class="btn btn-warning btn-sm">
-                Remove from Bookmark
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
               </button>
             </form>
           </div>
           <%})}else{ %>
-          <p class="text-muted text-center">No bookmarks in your list...</p>
+          <p class="text-muted text-center">No bookmarks in your list!</p>
           <% } %>
 
         </div>
@@ -197,20 +198,20 @@
               Subject: <%= element.subject %> <br />
             </p>
             <div class="d-flex align-items-center">
-              <a href="/questions/<%= element._id %> " role="button" class="btn btn-primary mr-2 mb-3">Read Answers</a>
+              <a href="/questions/<%= element._id %> " role="button" class="btn border mr-2 mb-3 btn-sm">Check Answers</a>
               <form action="/questions/delete/<%= element._id %> " method="post">
                 <div class="form-group">
                   <input type="hidden" name="_method" value="DELETE" />
-                  <button class="btn btn-outline-danger">
-                    Delete Question
+                  <button class="btn btn-outline-danger btn-sm">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
                 </div>
               </form>
-              <a href="/questions/edit/<%= element._id %> " class="ml-auto mr-3 text-info">Edit</a>
+              <a href="/questions/edit/<%= element._id %> " class="ml-auto mr-3 text-info"><i class="fa fa-edit" aria-hidden="true"></i></a>
             </div>
           </div>
           <% })} else { %>
-          <p class="text-muted text-center">No questions in your list...</p>
+          <p class="text-muted text-center">Hey! No questions in your list. I suggest you to post a question.</p>
           <% } %>
         </div>
         <div class="my-2">
@@ -224,12 +225,12 @@
                   element.answer %>
               </p>
               <div class="d-flex align-items-center">
-                <a href="/questions/answers/edit/<%= element.id %> " class="text-info mr-2">Edit</a>
+                <a href="/questions/answers/edit/<%= element.id %> " class="text-info mr-2"><i class="fa fa-edit" aria-hidden="true"></i></a>
 
                 <form action="/questions/answers/delete/<%= element.id %> " method="post">
                   <input type="hidden" name="_method" value="DELETE" />
                   <button type="submit" class="btn btn-outline-danger btn-sm">
-                    Delete my Answer
+                    <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
                 </form>
               </div>
@@ -249,7 +250,7 @@
             </div>
           </div>
           <%})} else{%>
-          <p class="text-muted text-center">No answers has been posted...</p>
+          <p class="text-muted text-center">No answers has been posted!</p>
           <% } %>
         </div>
         <div class="my-2 p">
@@ -259,12 +260,12 @@
             <div class="col-md-7">
               <h5><%= article.question %></h5>
               <div class="d-flex align-items-center">
-                <a href="/articles/<%= article._id %> " class="btn btn-primary btn-sm mr-2">Read Article</a>
-                <a href="/articles/edit/<%= article._id %> " class="text-info mr-2">Edit</a>
+                <a href="/articles/<%= article._id %> " class="btn border btn-sm mr-2">Read Article</a>
+                <a href="/articles/edit/<%= article._id %> " class="text-info mr-2"><i class="fa fa-edit" aria-hidden="true"></i></a>
                 <form action="/articles/delete/<%= article._id %> " method="POST">
                   <input type="hidden" name="_method" value="DELETE" />
                   <button class="btn btn-outline-danger btn-sm mr-2">
-                    Delete Article
+                    <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
                 </form>
               </div>
@@ -277,7 +278,7 @@
             </div>
           </div>
           <% })}else{ %>
-          <p class="text-muted text-center">No articles in your list.</p>
+          <p class="text-muted text-center">No articles in your list! It would be great if you write an article on topic of your interest :) </p>
           <% } %>
         </div>
       </div>

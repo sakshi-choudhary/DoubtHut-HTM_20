@@ -22,6 +22,7 @@ router.get("/settings/:id", ensureAuth, async (req, res) => {
       image: user.image,
       category: user.category,
     });
+    
   } catch (error) {
     console.error(error);
     res.send("Server Error");

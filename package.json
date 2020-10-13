@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
- 
-  
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "engines": {
-    "node" : "12.18.3"
-    },
+    "node": "12.18.3"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.6",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
