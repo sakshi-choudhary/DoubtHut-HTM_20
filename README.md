@@ -62,3 +62,6 @@ Live at: http://doubthut.azurewebsites.net/
 	<img src="https://forthebadge.com/images/badges/check-it-out.svg" alt="">
 	</p>
 
+
+## License
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
