@@ -5,7 +5,7 @@
 <img src="https://forthebadge.com/images/badges/check-it-out.svg" alt="">
 </p>
 <p align="center">
- http://doubthut.azurewebsites.net/
+	<a href="http://doubthut.azurewebsites.net/"> CLICK HERE</a>
 </p>
 
 
