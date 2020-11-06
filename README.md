@@ -1,6 +1,4 @@
 # DoubtHut- HTM'20
-
-<hr>
 <p align="center">
 <img src="https://forthebadge.com/images/badges/check-it-out.svg" alt="">
 </p>
