@@ -1,5 +1,7 @@
 # DoubtHut- HTM'20
 
+<hr>
+<img src="https://forthebadge.com/images/badges/check-it-out.svg" alt=""> : http://doubthut.azurewebsites.net/
 
 <img align="left" src="mlh-logo.png" height="70" width="170"/>
 <img align="right" src="htmlogo.png" height="100" width="170"/>
@@ -50,16 +52,13 @@ npm start
 Deployed on &nbsp; <img src="https://img.shields.io/badge/azure%20-%230072C6.svg?&style=for-the-badge&logo=azure-devops&logoColor=white"/>
 
 
-<hr>
-Live at: http://doubthut.azurewebsites.net/
+
 
 <hr> 
 <p align="center">
 	Made with :heart: by <a href="http://sakshichoudhary.me">Sakshi Choudhary</a>
 </p>
-<p align="center">
-	<img src="https://forthebadge.com/images/badges/check-it-out.svg" alt="">
-	</p>
+
 
 
 ## License
