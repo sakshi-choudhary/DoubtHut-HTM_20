@@ -56,6 +56,28 @@ npm start
 Deployed on &nbsp; <img src="https://img.shields.io/badge/azure%20-%230072C6.svg?&style=for-the-badge&logo=azure-devops&logoColor=white"/>
 
 
+## 📌 Prerequisites
+
+### 💻 System requirement :
+
+1. Any system with basic configuration.
+2. Operating System : Any (Windows / Linux / Mac).
+
+### 💿 Software requirement :
+
+1. Updated browser
+2. Node.js installed (If not download it [here](https://nodejs.org/en/download/)).
+3. Any text editor of your choice.
+
+
+## 📜 License
+
+`DoubtHut` is available under the [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org). See the LICENSE file for more info.
+
+## 🤝 Contributing
+
+Please read [`Contributing.md`](https://github.com/sakshi-choudhary/DoubtHut-HTM_20/blob/main/Contributing.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
 
 
 <hr> 
@@ -64,5 +86,3 @@ Deployed on &nbsp; <img src="https://img.shields.io/badge/azure%20-%230072C6.svg
 </p>
 
 
-## License
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
